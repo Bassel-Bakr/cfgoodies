@@ -1,18 +1,6 @@
-Vue.component("vue-text", {
-  template: `
-    <div>
-      <nav>
-        <ul>
-          <li v-for="name in names" v-if="name & 1">{{name}}</li>
-        </ul>
-      </nav>
-    </div>
-  `,
-  data: () => {
-    return {
-      names: [1, 2, 3, 4, 5]
-    };
-  }
-});
-
-const vueApp = new Vue({ el: '#vue-app' });
+const express = require('express');
+const app = express();
+app.use(express.static(__dirname));
+app.get("/", (req, res) => res.sendFile("index.html"));
+app.use((req, res) => res.send("404 :P"));
+app.listen(process.env.PORT || 5000);
