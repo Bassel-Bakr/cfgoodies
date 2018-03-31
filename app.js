@@ -7,6 +7,6 @@ app.use(sass({
   indentedSyntax: false
 }));
 app.use(express.static(__dirname));
-app.get("/", (req, res) => res.sendFile("index.html"));
+app.get("/", (req, res) => res.sendFile("website.html"));
 app.use((req, res) => res.send("404 :P"));
 app.listen(process.env.PORT || 5500);
