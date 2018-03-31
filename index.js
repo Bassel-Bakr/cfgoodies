@@ -34,7 +34,7 @@ Vue.component("app-nav", {
         <div class="tabs is-boxed is-fullwidth">
           <ul>
             <li v-for="i in tabs.length" :class="[{'is-active': ('tab_'+i) === activeTab}]">
-              <a :id="'tab_'+i" @click="selectTab('tab_'+i)" href="#">{{tabs[i]}}</a>
+              <a :id="'tab_'+i" @click="selectTab('tab_'+i)" href="#">{{tabs[i-1]}}</a>
             </li>
           </ul>
         </div>
