@@ -71,7 +71,6 @@ Vue.component("app-column", {
   `
 });
 
-
 Vue.component("app-card", {
   props: ["title"],
   template: `
