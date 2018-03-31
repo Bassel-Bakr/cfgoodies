@@ -9,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "bulma": "^0.6.2",
+    "bulma-extensions": "^1.0.14",
+    "express": "^4.16.3",
+    "node-sass": "^4.8.3",
+    "node-sass-middleware": "^0.11.0"
   }
 }
