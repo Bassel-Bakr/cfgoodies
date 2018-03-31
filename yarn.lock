@@ -900,7 +900,7 @@ node-sass-middleware@^0.11.0:
     mkdirp "^0.5.1"
     node-sass "^4.3.0"
 
-node-sass@^4.3.0, node-sass@^4.8.3:
+node-sass@^4.3.0:
   version "4.8.3"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.8.3.tgz#d077cc20a08ac06f661ca44fb6f19cd2ed41debb"
   dependencies:
