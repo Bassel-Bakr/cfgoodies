@@ -1,13 +1,12 @@
 const path = require('path');
+const minify = require('express-minify');
 const sass = require('node-sass-middleware');
 const express = require('express');
 const app = express();
-app.use(sass({
-  src: __dirname,
-  dest: __dirname,
-  indentedSyntax: false
-}));
+app.use(minify({ js_match: __dirname, css_match: __dirname }));
+app.use(minify({ cache: path.join(__dirname, 'cache') }));
+app.use(sass({ src: __dirname, dest: __dirname, indentedSyntax: false }));
 app.use(express.static(__dirname));
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "website.html")));
 app.use((req, res) => res.send("404 :P"));
-app.listen(process.env.PORT || 5500);
+app.listen(process.env.PORT || 5000);

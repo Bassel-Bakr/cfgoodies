@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Bulma!</title>
+  <title>Azhar OJ</title>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <script src="https://unpkg.com/vue"></script>
-  <link rel="stylesheet" type="text/css" href="app.css">
+  <link rel="stylesheet" type="text/css" href="app.scss">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
           <div class="columns">
             <!-- big column -->
             <app-column class="column is-four-fifths" empty="No new highlights!">
-              <app-card v-for="i in 10" :title="`AOJ Round ${11 - i}`">
+              <app-card v-for="i in 10" :key=i :title="`AOJ Round ${11 - i}`">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a class="is-link">@bulmaio</a>. #css #responsive
               </app-card>
             </app-column>
