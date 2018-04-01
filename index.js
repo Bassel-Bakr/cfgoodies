@@ -33,9 +33,11 @@ Vue.component("app-nav", {
       <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <a @click="gotoPage(parseInt(current)-1)" class="pagination-previous">Previous</a>
         <ul class="pagination-list">
-          <li v-for="i in maxVisible" v-if="0 < (parseInt(current)-i*step)"><a @click="gotoPage(parseInt(current)-i*step)" class="pagination-link" :aria-label="'Goto page ' + (parseInt(current)-i*step)">{{ (parseInt(current)-i*step) }}</a></li>
+          <li v-for="i in maxVisible" v-if="(parseInt(current)-(maxVisible - i + 1)*step) > 0"><a @click="gotoPage(parseInt(current)-(maxVisible - i + 1)*step)" class="pagination-link">{{ (parseInt(current)-(maxVisible - i + 1)*step) }}</a></li>
+          
           <li><a class="pagination-link is-current" :aria-label="'Goto page ' + current">{{ current }}</a></li>
-          <li v-for="i in maxVisible" v-if="(parseInt(current)+i*step) < 140"><a @click="gotoPage(parseInt(current)+i*step)" class="pagination-link" :aria-label="'Goto page ' + (parseInt(current)+i*step)">{{ (parseInt(current)+i*step) }}</a></li>
+          
+          <li v-for="i in maxVisible" v-if="(parseInt(current)+i*step) < 140"><a @click="gotoPage(parseInt(current)+i*step)" class="pagination-link">{{ (parseInt(current)+i*step) }}</a></li>
         </ul>
         <a @click="gotoPage(parseInt(current)+1)" class="pagination-next">Next page</a>
       </nav>
