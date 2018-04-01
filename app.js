@@ -20,8 +20,9 @@ app.get("/gallery", (req, res) => {
     path.join(__dirname, "cache", `users_${page}.json`), { encoding: "utf8" },
     (err, data) => {
       if (err)
-        throw err;
-      res.render("website", { page: page, users: JSON.parse(data) });
+        res.render("website", { page: page, users: JSON.parse(data) });
+      else
+        res.render("website", { page: -1, users: JSON.parse('[{"handle":"Unkown", "titlePhoto": ""}]') });
     }
   );
 });
@@ -40,4 +41,4 @@ app.get("/data/:id", (req, res) => {
 
 app.use((req, res) => res.send("404 :P"));
 
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 5000, () => console.log("listening"));
