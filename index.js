@@ -35,7 +35,7 @@ Vue.component("app-nav", {
         <ul class="pagination-list">
           <li v-for="i in maxVisible" v-if="0 < (+current-i*step)"><a @click="gotoPage(+current-i*step)" class="pagination-link" :aria-label="'Goto page ' + (+current-i*step)">{{ (+current-i*step) }}</a></li>
           <li><a class="pagination-link is-current" :aria-label="'Goto page ' + current">{{ current }}</a></li>
-          <li v-for="i in maxVisible" v-if="(+current+i*step) < 140"><a @click="gotoPage(+current-i*step)" class="pagination-link" :aria-label="'Goto page ' + (+current+i*step)">{{ (+current+i*step) }}</a></li>
+          <li v-for="i in maxVisible" v-if="(+current+i*step) < 140"><a @click="gotoPage(+current+i*step)" class="pagination-link" :aria-label="'Goto page ' + (+current+i*step)">{{ (+current+i*step) }}</a></li>
         </ul>
         <a @click="gotoPage(+current+1)" class="pagination-next">Next page</a>
       </nav>
