@@ -109,7 +109,7 @@ Vue.component("app-footer", {
   template: `
     <div :class=theme>
       <div class="container section content has-text-centered">
-        Made with <i class="fas fa-heart"></i> by <strong>Bassel Bakr</strong>
+        Made with <i style="color: red" class="fas fa-heart"></i> by <strong>Bassel Bakr</strong>
         <slot></slot>
       </div>
     </div>
