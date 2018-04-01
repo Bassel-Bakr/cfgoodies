@@ -27,37 +27,31 @@ Vue.component("app-header", {
 });
 
 Vue.component("app-nav", {
-  props: ["theme"],
+  props: ["theme", "current"],
   template: `
     <div :class=theme>
-      <div class="container">
-        <div class="tabs is-boxed is-fullwidth">
-          <ul>
-            <li v-for="i in tabs.length" :class="[{'is-active': ('tab_'+i) === activeTab}]">
-              <a :id="'tab_'+i" @click="selectTab('tab_'+i)" href="#">{{tabs[i-1]}}</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <slot></slot>
+      <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <a @click="gotoPage(+current-1)" class="pagination-previous">Previous</a>
+        <ul class="pagination-list">
+          <li v-for="i in maxVisible" v-if="0 < (+current-i*step)"><a @click="gotoPage(+current-i*step)" class="pagination-link" :aria-label="'Goto page ' + (+current-i*step)">{{ (+current-i*step) }}</a></li>
+          <li><a class="pagination-link is-current" :aria-label="'Goto page ' + current">{{ current }}</a></li>
+          <li v-for="i in maxVisible" v-if="(+current+i*step) < 140"><a @click="gotoPage(+current-i*step)" class="pagination-link" :aria-label="'Goto page ' + (+current+i*step)">{{ (+current+i*step) }}</a></li>
+        </ul>
+        <a @click="gotoPage(+current+1)" class="pagination-next">Next page</a>
+      </nav>
     </div>
   `,
   data: () => {
     return {
       activeTab: "tab_1",
-      tabs: ["Codeforces Photo Gallery"/* "Home", "Contest", "Problemset", "Contact", "Help", "About" */]
+      step: 10,
+      maxVisible: 2,
+      tabs: ["Codeforces Photo Gallery"]
     };
   },
   methods: {
-    selectTab: function (id) {
-      let old_list = document.getElementById(this.activeTab).parentElement.classList;
-      let new_list = document.getElementById(id).parentElement.classList;
-      if (this.activeTab !== id) {
-        new_list.add("is-active");
-        old_list.remove("is-active");
-        this.activeTab = id;
-      }
+    gotoPage: function (page) {
+      window.location.href = `gallery?page=${page}`;
     }
   }
 });
@@ -81,7 +75,7 @@ Vue.component("app-card", {
         </div>
       </div>
       <header class="card-header" style="position: absolute; bottom: 0px;">
-        <p class="card-header-title has-text-centered">
+        <p style="max-width:100%; overflow:hidden" class="card-header-title has-text-centered">
           {{ handle }}
         </p>
       </header>

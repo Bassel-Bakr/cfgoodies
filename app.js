@@ -21,7 +21,7 @@ app.get("/gallery", (req, res) => {
     (err, data) => {
       if (err)
         throw err;
-      res.render("website", { users: JSON.parse(data) });
+      res.render("website", { page: page, users: JSON.parse(data) });
     }
   );
 });
@@ -30,9 +30,9 @@ app.get("/gallery", (req, res) => {
 const usersJson = path.join(__dirname, "cache", "users.json");
 const now = new Date().getTime();
 
-if (!fs.existsSync(usersJson) || new Date(fs.statSync(usersJson).ctimeMs) + (24 * 60 * 60 * 1000) < now) {
-  request("http://codeforces.com/api/user.ratedList?activeOnly=true").pipe(fs.createWriteStream(usersJson));
-}
+// if (!fs.existsSync(usersJson) || new Date(fs.statSync(usersJson).ctimeMs) + (24 * 60 * 60 * 1000) < now) {
+//   request("http://codeforces.com/api/user.ratedList?activeOnly=true").pipe(fs.createWriteStream(usersJson));
+// }
 
 app.get("/data/:id", (req, res) => {
   res.sendFile(path.join(__dirname, "cache", `users_${req.params.id}.json`));
