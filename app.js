@@ -19,10 +19,12 @@ app.get("/gallery", (req, res) => {
   fs.readFile(
     path.join(__dirname, "cache", `users_${page}.json`), { encoding: "utf8" },
     (err, data) => {
-      if (err)
+      if (err) {
+        console.log(err);        
+        res.render("website", { page: -1, users: JSON.parse('[{"handle":"Unknown", "titlePhoto": ""}]') });
+      } else {
         res.render("website", { page: page, users: JSON.parse(data) });
-      else
-        res.render("website", { page: -1, users: JSON.parse('[{"handle":"Unkown", "titlePhoto": ""}]') });
+      }        
     }
   );
 });
