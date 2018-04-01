@@ -27,8 +27,8 @@ app.get("/gallery", (req, res) => {
 });
 
 // make sure we have the list
-const usersJson = path.join(__dirname, "cache", "users.json");
-const now = new Date().getTime();
+// const usersJson = path.join(__dirname, "cache", "users.json");
+// const now = new Date().getTime();
 
 // if (!fs.existsSync(usersJson) || new Date(fs.statSync(usersJson).ctimeMs) + (24 * 60 * 60 * 1000) < now) {
 //   request("http://codeforces.com/api/user.ratedList?activeOnly=true").pipe(fs.createWriteStream(usersJson));
