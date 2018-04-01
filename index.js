@@ -14,10 +14,10 @@ Vue.component("app-header", {
         <div class="container">
           <div class="title">
             <br>
-            Azhar OJ
+            Codeforces Gallery
           </div>
           <div class="subtitle">
-            Best online judge
+            Feast your eyes!
           </div>
         </div>
         <br>
@@ -46,7 +46,7 @@ Vue.component("app-nav", {
   data: () => {
     return {
       activeTab: "tab_1",
-      tabs: ["Home", "Contest", "Problemset", "Contact", "Help", "About"]
+      tabs: ["Codeforces Photo Gallery"/* "Home", "Contest", "Problemset", "Contact", "Help", "About" */]
     };
   },
   methods: {
@@ -72,21 +72,30 @@ Vue.component("app-column", {
 });
 
 Vue.component("app-card", {
-  props: ["title"],
+  props: ["handle"],
   template: `
     <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">
-          {{ title }}
-        </p>
-      </header>
       <div class="card-content">
         <div class="content">
           <slot></slot>
         </div>
       </div>
+      <header class="card-header" style="position: absolute; bottom: 0px;">
+        <p class="card-header-title has-text-centered">
+          {{ handle }}
+        </p>
+      </header>
     </div>
-  `
+    `
+});
+
+Vue.component("app-codeforces-user", {
+  props: ["handle", "src"],
+  template: `
+    <app-card style="display: flex; justify-content: center;" :handle="handle">
+        <img :src="src" :alt="handle">
+    </app-card>
+    `
 });
 
 Vue.component("app-main", {
