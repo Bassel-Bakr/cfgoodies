@@ -27,7 +27,7 @@ Vue.component("app-header", {
 });
 
 Vue.component("app-nav", {
-  props: ["theme", "current"],
+  props: ["theme", "current", "pages"],
   template: `
     <div :class=theme>
       <nav class="pagination is-centered" role="navigation" aria-label="pagination">
@@ -37,7 +37,7 @@ Vue.component("app-nav", {
           
           <li><a class="pagination-link is-current" :aria-label="'Goto page ' + current">{{ current }}</a></li>
           
-          <li v-for="i in maxVisible" v-if="(parseInt(current)+i*step) < 140"><a @click="gotoPage(parseInt(current)+i*step)" class="pagination-link">{{ (parseInt(current)+i*step) }}</a></li>
+          <li v-for="i in maxVisible" v-if="(parseInt(current)+i*step) <= pages"><a @click="gotoPage(parseInt(current)+i*step)" class="pagination-link">{{ (parseInt(current)+i*step) }}</a></li>
         </ul>
         <a @click="gotoPage(parseInt(current)+1)" class="pagination-next">Next page</a>
       </nav>
@@ -89,9 +89,7 @@ Vue.component("app-codeforces-user", {
   props: ["handle", "src"],
   template: `
     <app-card style="display: flex; justify-content: center;" :handle="handle">
-        <!-- <figure class="image"> -->
           <img :src="src" :alt="handle">
-        <!-- </figure> -->
     </app-card>
     `
 });
