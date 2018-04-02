@@ -89,7 +89,9 @@ Vue.component("app-codeforces-user", {
   props: ["handle", "src"],
   template: `
     <app-card style="display: flex; justify-content: center;" :handle="handle">
-        <img :src="src" :alt="handle">
+        <!-- <figure class="image"> -->
+          <img :src="src" :alt="handle">
+        <!-- </figure> -->
     </app-card>
     `
 });
