@@ -37,52 +37,16 @@
         <!-- </div> -->
       </app-main>
 
+      
       <app-nav 
         class="box"
         current=<%= page %>
+        pages=<%= pagesCount %>
           >
       </app-nav>
       <app-footer :theme=theme></app-footer>
     </app-root>
   </div>
-
-
-  
-  <script>
-    const list = document.getElementById("galleryId");
-
-    function addUser(user) {
-      const tag = document.createElement("app-codeforces-user");
-      tag.classList.add("column");
-      tag.classList.add("box");
-      tag.classList.add("is-one-fifth");
-      tag.setAttribute("handle", user.handle);
-      tag.setAttribute("src", user.titlePhoto);
-      list.appendChild(tag);
-    }
-
-    // const xhr = new XMLHttpRequest();
-    // xhr.open("GET", `/data/${document.getElementById("page").innerText}`, true);
-    // xhr.onload = function () {
-    //   // console.log("onload");
-    //   // console.log(this.response);
-    //   const json = JSON.parse(this.responseText);
-    //   // console.log("parsing");
-      
-    //   for(user of json)
-    //     addUser(user); 
-
-    //   // console.log("parsing done");
-    // }
-    // xhr.onerror = function () {
-    //   console.log("onerror");
-    // }
-    // xhr.ontimeout = function () {
-    //   console.log("onttimeout");
-    // }
-    // xhr.timeout = 60 * 1000;
-    // xhr.send(null);
-  </script>
 
   <script src="https://unpkg.com/vue"></script>
   <script src="index.js"></script>
