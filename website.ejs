@@ -6,16 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Codeforces Gallery</title>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-  <link rel="stylesheet" href="app.min.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" >
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="dist/app.css">
 </head>
 
 <body>
   <div id="vue-app">
     <app-root>
       <app-header :theme=theme></app-header>
-      <app-nav 
-        class="box"
-        current=<%= page %>
+      <app-nav
+        class="box" current=<%= page %>
         pages=<%= pagesCount %>
           >
       </app-nav>
@@ -23,33 +28,29 @@
       <app-main>
         <!-- Main stuff goes here -->
         <!-- <div class="container"> -->
-        <div id="galleryId" class="columns is-multiline is-centered">
+        <div id="galleryId">
           <!-- big column -->
           <% for(user of users) { %>
-            <app-codeforces-user
-              class="column is-one-fifth"
-              handle=<%= user.handle %>
-              src=<%= user.titlePhoto %>
-              >
-            </app-codeforces-user>
+            <!-- % if(user.titlePhoto !== "http://userpic.codeforces.com/no-title.jpg") { % -->
+              <app-codeforces-user handle=<%= user.handle %> src=<%= user.titlePhoto %>>
+              </app-codeforces-user>
+            <!-- % } % -->
           <% } %>
         </div>
         <!-- </div> -->
       </app-main>
 
-      
-      <app-nav 
-        class="box"
-        current=<%= page %>
-        pages=<%= pagesCount %>
-          >
+
+      <app-nav class="box" current=<%= page %> pages=<%= pagesCount %>>
       </app-nav>
       <app-footer :theme=theme></app-footer>
     </app-root>
   </div>
 
-  <script src="https://unpkg.com/vue"></script>
-  <script src="index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+  <script src="dist/app.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 
 </html>
