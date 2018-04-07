@@ -1,17 +1,15 @@
 <template>
   <div :class=theme>
     <nav class="pagination" role="navigation" aria-label="pagination">
-      <a v-if="parseInt(current) != 1" @click="gotoPage(1)" class="pagination-previous">First</a>
-      <a v-if="0 < parseInt(current)-10" @click="gotoPage(parseInt(current)-10)" class="pagination-previous">&lt;&lt; Skip 10</a>
-      <a v-if="0 < parseInt(current)-1" @click="gotoPage(parseInt(current)-1)" class="pagination-previous">Previous</a>
-      <ul class="pagination-list">          
-        <li>
-          <a class="pagination-link is-current" :aria-label="'Goto page ' + current">{{ current }}</a>
-        </li>
+      <ul class="pagination">
+        <li><a v-if="parseInt(current) != 1" @click="gotoPage(1)" class="previous">First</a></li>
+        <li><a v-if="0 < parseInt(current)-10" @click="gotoPage(parseInt(current)-10)">&lt;&lt; Skip 10</a></li>
+        <li><a v-if="0 < parseInt(current)-1" @click="gotoPage(parseInt(current)-1)">Previous</a></li>
+        <li class="active"><a :aria-label="'Goto page ' + current">{{ current }}</a></li>
+        <li><a v-if="parseInt(current)+1 <= pages" @click="gotoPage(parseInt(current)+1)">Next</a></li>
+        <li><a v-if="parseInt(current)+10 <= pages" @click="gotoPage(parseInt(current)+10)">Skip 10 &gt;&gt;</a></li>
+        <li><a v-if="parseInt(current) != pages" @click="gotoPage(pages)" class="next">Last</a></li>
       </ul>
-      <a v-if="parseInt(current)+1 <= pages" @click="gotoPage(parseInt(current)+1)" class="pagination-next">Next</a>
-      <a v-if="parseInt(current)+10 <= pages" @click="gotoPage(parseInt(current)+10)" class="pagination-next">Skip 10 &gt;&gt;</a>
-      <a v-if="parseInt(current) != pages" @click="gotoPage(pages)" class="pagination-next">Last</a>
     </nav>
   </div>
 </template>

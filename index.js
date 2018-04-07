@@ -19,7 +19,7 @@ const myComponents = {
 };
 
 const app = new Vue({
-  el: "#vue-app", 
+  el: "#vue-app",
   components: myComponents,
   data() {
     return {
@@ -27,4 +27,11 @@ const app = new Vue({
     };
   }
 });
- 
+
+AOS.init({
+  duration: 500
+});
+
+$(window).on("load", function() {
+  AOS.refresh();
+});
