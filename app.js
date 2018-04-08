@@ -20,7 +20,9 @@ let maxPages = 0;
 const updater = () => {
   console.log("Updating cache...");
 
-  const usersJson = path.join(__dirname, "cache", "users.json");
+  const cache = path.join(__dirname, "cache");
+  if(!fs.existsSync(cache))
+    fs.mkdirSync(cache);
   request.get(
     "http://codeforces.com/api/user.ratedList",
     (err, response, body) => {
