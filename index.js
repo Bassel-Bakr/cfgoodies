@@ -34,5 +34,4 @@ AOS.init({
 
 $(window).ready(function() {
   AOS.refresh();
-
 });

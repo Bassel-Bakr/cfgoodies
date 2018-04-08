@@ -79,6 +79,6 @@ img {
 }
 
 .app-card {
-  box-shadow: 5px 5px 30px 1px black;
+  box-shadow: 5px 5px 20px 1px black;
 }
 </style>
