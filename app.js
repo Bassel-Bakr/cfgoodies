@@ -1,14 +1,19 @@
 const fs = require("fs");
 const path = require("path");
 const request = require("request");
-
-const sass = require("node-sass-middleware");
 const express = require("express");
-const app = express();
-app.set("view engine", "ejs");
-app.set("views", __dirname);
+const compression = require("compression");
 
-app.use(sass({ src: __dirname, dest: __dirname, indentedSyntax: false }));
+const app = express();
+
+// gzip compression
+app.use(compression());
+
+// use ejs templates
+app.set("view engine", "ejs");
+
+// set views folder
+app.set("views", __dirname);
 
 // auto retrieve
 let maxPages = 0;
@@ -40,16 +45,15 @@ const updater = () => {
 updater();
 setInterval(updater, 60 * (60 * 1000));
 
+// static files folder
 app.use(express.static(__dirname));
 
-app.get("/", (req, res) => {
-  res.redirect("/gallery");
-});
-
+// rest api for users json
 app.get("/data/:id", (req, res) => {
   res.sendFile(path.join(__dirname, "cache", `users_${req.params.id}.json`));
 });
 
+// entry point for the gallery
 app.get("/gallery", (req, res) => {
   let page = req.query.page || 1;
   page = Math.min(page, maxPages);
@@ -76,6 +80,9 @@ app.get("/gallery", (req, res) => {
   );
 });
 
-app.use((req, res) => res.send("404 :P"));
+// redirect to the only valid webpage
+app.use((req, res) => {
+  res.redirect("/gallery");
+});
 
 app.listen(process.env.PORT || 5000, () => console.log("listening"));
