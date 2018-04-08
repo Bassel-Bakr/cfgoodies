@@ -32,6 +32,6 @@ AOS.init({
   duration: 500
 });
 
-$(window).ready(function() {
+$(window).on("load", function() {
   AOS.refresh();
 });
