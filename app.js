@@ -65,7 +65,7 @@ app.get("/gallery", (req, res) => {
       if (err) {
         console.error(err);
         res.render("website", {
-          page: -1,
+          page: 0,
           pagesCount: 0,
           users: JSON.parse('[{"handle":"Unknown", "titlePhoto": ""}]')
         });
