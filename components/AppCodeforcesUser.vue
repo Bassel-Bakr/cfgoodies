@@ -71,4 +71,14 @@ img, .app-card {
   height: auto;
   cursor: pointer;
 }
+
+img {
+  height: 100%;
+  width: auto;
+  box-shadow: 0 0 10px 1px black;
+}
+
+.app-card {
+  box-shadow: 5px 5px 30px 1px black;
+}
 </style>
