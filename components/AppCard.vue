@@ -45,4 +45,10 @@ export default {
   height: 100%;
   vertical-align: middle;
 }
+
+.card-header p {
+  font-size: 1.8rem;
+  /* display: table-cell; */
+  /* vertical-align: bottom; */
+}
 </style>

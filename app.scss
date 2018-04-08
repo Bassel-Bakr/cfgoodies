@@ -1,9 +1,9 @@
 // @import 'node_modules/bulma/sass/utilities/initial-variables.sass';
 
-$primary: rgb(0, 26, 31);
+$primary: black;
 
 .card {
-  padding: 10px;
+  padding: 20px;
   border-top: 1px solid $primary;
   border-left: 1px solid $primary;
 }
