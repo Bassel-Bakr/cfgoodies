@@ -33,7 +33,8 @@ const updater = () => {
         fs.writeFile(
           path.join(__dirname, "cache", `users_${i / m + 1}.json`),
           JSON.stringify(users.slice(i, i + m)),
-          { encoding: "utf8" }
+          { encoding: "utf8" },
+          err => console.error("problem", err)
         );
       }
       maxPages = Math.ceil(n / m);
