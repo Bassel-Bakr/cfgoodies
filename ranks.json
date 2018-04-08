@@ -1,0 +1,26 @@
+{
+  "ranks": {
+    "newbie": "#808080",
+    "pupil": "#008007",
+    "specialist": "#03A89E",
+    "expert": "#0000FF",
+    "candidate": "#AA00AA",
+    "master": "#FF8C00",
+    "international master": "#FF8C00",
+    "grandmaster": "#FF0000",
+    "international": "#FF0000",
+    "legendary": "#FF0000"
+  },
+  "franks": {
+    "newbie": "#808080",
+    "pupil": "#008007",
+    "specialist": "#03A89E",
+    "expert": "#0000FF",
+    "candidate": "#AA00AA",
+    "master": "#FF8C00",
+    "international master": "#FF8C00",
+    "grandmaster": "#FF0000",
+    "international": "#FF0000",
+    "legendary": "#000000"
+  }
+}
