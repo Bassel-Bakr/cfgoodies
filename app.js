@@ -7,7 +7,7 @@ const compression = require("compression");
 const app = express();
 
 // gzip compression
-// app.use(compression());
+app.use(compression());
 
 // use ejs templates
 app.set("view engine", "ejs");
