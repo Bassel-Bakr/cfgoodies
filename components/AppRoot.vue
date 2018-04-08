@@ -20,8 +20,9 @@ body {
 #galleryId {
   overflow: hidden;
   display: grid;
-  grid-gap: 50px;
-  margin: 10px;
+  grid-row-gap: 3vh;
+  grid-column-gap: 3vw;
+  margin: 3vw;
   grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
 }
 </style>

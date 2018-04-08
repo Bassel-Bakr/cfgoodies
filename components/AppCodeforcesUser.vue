@@ -65,8 +65,10 @@ export default {
 </script>
 
 <style  scoped >
-.app-card {
-  height: 100%;
+img, .app-card {
+  min-width: 10%;
+  max-width: 100%;
+  height: auto;
   cursor: pointer;
 }
 </style>
