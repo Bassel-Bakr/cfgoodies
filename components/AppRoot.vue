@@ -6,15 +6,11 @@
 
 <script>
 export default {
-  name: "app-root"
+  name: "app-root",
 }
 </script> 
 
 <style>
-html {
-  margin: 0;
-  padding: 0;
-}
 body {
   margin: 0;
   padding: 0;

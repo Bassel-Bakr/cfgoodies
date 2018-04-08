@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <div class="content section">
-      <slot></slot>
-    </div>
+  <div class="app-main">
+    <slot></slot>
   </div>
 </template>
 
@@ -11,3 +9,9 @@ export default {
   name: "app-main"
 }
 </script>
+
+<style scoped>
+.app-main {
+  padding: 0 20px;
+}
+</style>

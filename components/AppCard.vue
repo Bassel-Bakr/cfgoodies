@@ -5,7 +5,7 @@
     </div>
     <header class="card-header">
       <p>
-        {{ handle }}
+        <span class="first-letter">{{ handle.charAt(0) }}</span>{{ handle.slice(1) }}
       </p>
     </header>
   </div>

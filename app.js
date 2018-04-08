@@ -17,7 +17,7 @@ const updater = () => {
 
   const usersJson = path.join(__dirname, "cache", "users.json");
   request.get(
-    "http://codeforces.com/api/user.ratedList?activeOnly=true",
+    "http://codeforces.com/api/user.ratedList",
     (err, response, body) => {
       const users = JSON.parse(body).result.filter(
         user => user.titlePhoto !== "http://userpic.codeforces.com/no-title.jpg"

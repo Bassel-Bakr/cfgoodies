@@ -2,14 +2,12 @@
   <div :class=theme>
     <header>
       <br>
-      <div class="header-overlay">
-        <div class="title">
-          <br>
-          <p>Codeforces Gallery</p>
-        </div>
-        <div class="subtitle">
-          <p>Feast your eyes!</p>
-        </div>
+      <div class="title">
+        <br>
+        <p>Codeforces Gallery</p>
+      </div>
+      <div class="subtitle">
+        <p>Feast your eyes!</p>
       </div>
     </header>
   </div>
@@ -25,20 +23,14 @@ export default {
 <style scoped>
 header {
   width: 100%;
-  height: 40vh;
-  /* background-size: cover; */
+  height: 30vh;
+  display: table;
   background-attachment: fixed;
-  background-image: url("http://r2metrics.com/wp-content/uploads/2015/09/banner-custom-programming-financial-applications-alm-products-services.jpg");
-}
-
-.header-overlay {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 40vh;
-  opacity: 0.7;
-  background-color: black;
-  background-attachment: fixed;
+  background-image: linear-gradient(
+      rgba(37, 6, 63, 0.5),
+      rgba(37, 6, 63, 0.5)
+    ),
+    url("https://wallpapertag.com/wallpaper/full/c/a/9/125582-code-wallpaper-1920x1200-for-ipad-2.jpg");
 }
 
 header p {
@@ -47,12 +39,17 @@ header p {
   text-shadow: 5px 5px rgb(4, 59, 95);
 }
 
+.title, .subtitle {
+  display: table-row;
+  vertical-align: middle;
+}
+
 .title p {
   font-size: 5rem;
 }
 
 .subtitle p {
-  color: grey;
+  color: lightgrey;
   font-size: 3rem;
   font-style: italic;
 }

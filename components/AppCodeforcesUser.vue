@@ -1,5 +1,5 @@
 <template inline-template="true">
-  <div :data-aos="getRandomAnim()" aos-duration="5000" class="app-card">
+  <div :data-aos="getRandomAnim()" class="app-card">
     <app-card :handle="handle">
       <img @click="gotoUser" :src="src" :alt="handle">
     </app-card>
@@ -8,10 +8,12 @@
 
 <script>
 import AppCard from "./AppCard.vue";
+import Colors from "../ranks.json";
 
 export default {
   name: "app-codeforces-user",
-  props: ["handle", "src"],
+  props: ["handle", "src", "rank"],
+  
   data() {
     return {
       animationNames: [
@@ -44,6 +46,11 @@ export default {
       ]
     }
   },
+  mounted() {
+    // console.log(this.handle, this.rank);
+    this.$el.style.color = Colors.ranks[this.rank];
+    this.$el.getElementsByClassName("first-letter")[0].style.color = Colors.franks[this.rank];
+  },
   methods: {
     gotoUser() {
       window.location.href = `http://codeforces.com/profile/${this.handle}`;
@@ -60,5 +67,6 @@ export default {
 <style  scoped >
 .app-card {
   height: 100%;
+  cursor: pointer;
 }
 </style>

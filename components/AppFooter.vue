@@ -11,17 +11,24 @@
 export default {
   name: "app-footer",
   props: ["theme"]
-}
+};
 </script>
 
 <style scoped>
 footer {
+  width: 100%;
+  height: 20vh;
   display: table;
   text-align: center;
   font-weight: bold;
-  width: 100%;
-  min-height: 100px;
-  background-color: rgb(23, 19, 51);
+  background-attachment: fixed;
+  background-image: linear-gradient(
+      to right,
+      rgba(60, 15, 68, 0.5),
+      rgba(9, 1, 17, 0.5),
+      rgba(60, 15, 68, 0.5)
+    ),
+    url("https://wallpapertag.com/wallpaper/full/c/a/9/125582-code-wallpaper-1920x1200-for-ipad-2.jpg");
 }
 
 footer p {
