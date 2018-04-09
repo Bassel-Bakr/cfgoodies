@@ -1,2 +1,2 @@
 # cfgoodies
-Codeforces photo gallery
+Codeforces photo gallery using VueJS
