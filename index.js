@@ -36,4 +36,5 @@ AOS.init({
 
 $(window).on("load", function() {
   AOS.refresh();
+  // document.getElementById("").page
 });

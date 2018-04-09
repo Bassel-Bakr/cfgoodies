@@ -15,8 +15,17 @@ app.set("view engine", "ejs");
 // set views folder
 app.set("views", __dirname);
 
+// read/save config.json
+let config = { pages: 0, lastUpdate: 0 };
+const configPath = path.join(__dirname, "config.json");
+
+if(!fs.existsSync(configPath))
+  fs.writeFileSync(configPath, JSON.stringify(config));
+else
+  config = JSON.parse(fs.readFileSync(configPath));
+
 // auto retrieve
-let maxPages = 1;
+let maxPages = config.pages;
 const updater = () => {
   console.log("Updating cache...");
 
@@ -40,13 +49,21 @@ const updater = () => {
         );
       }
       maxPages = Math.ceil(n / m);
+      config.pages = maxPages;
+      config.lastUpdate = new Date().getTime();
+      fs.writeFile(configPath, JSON.stringify(config));
       console.log("Updated cache :)");
     }
   );
 };
 
-updater();
-setInterval(updater, 60 * (60 * 1000));
+const now = new Date();
+const interval = 60 * 60 * 1000; // 1 hour
+
+if(now.getTime() - config.lastUpdate > interval);
+  updater();
+
+setInterval(updater, interval);
 
 // static files folder
 app.use(express.static(__dirname));
