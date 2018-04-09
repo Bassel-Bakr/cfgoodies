@@ -4,6 +4,7 @@ const request = require("request");
 const express = require("express");
 const compression = require("compression");
 
+// instance of the server
 const app = express();
 
 // gzip compression
@@ -16,19 +17,15 @@ app.set("view engine", "ejs");
 app.set("views", __dirname);
 
 // read/save config.json
-let config = { pages: 0, lastUpdate: 0 };
+let config = { usersCount: 0, pages: 0, lastUpdate: 0 };
 const configPath = path.join(__dirname, "config.json");
 
-try {
-  const notFirstTime = fs.existsSync(configPath);
-  console.log("notFirstTime", notFirstTime);
-  if (notFirstTime) config = JSON.parse(fs.readFileSync(configPath));
-  else
-    fs.writeFileSync(configPath, JSON.stringify(config), { encoding: "utf8" });
-} catch (err) {
-  console.log("config", err);
-}
-// auto retrieve
+const notFirstTime = fs.existsSync(configPath);
+console.log("notFirstTime", notFirstTime);
+if (notFirstTime) config = JSON.parse(fs.readFileSync(configPath));
+else fs.writeFile(configPath, JSON.stringify(config), { encoding: "utf8" });
+
+// auto retrieve pages from cf api
 let maxPages = config.pages;
 const updater = () => {
   console.log("Updating cache...");
@@ -42,24 +39,34 @@ const updater = () => {
         user => user.titlePhoto !== "http://userpic.codeforces.com/no-title.jpg"
       );
       const n = users.length;
-      const m = 100;
+
+      // stop if no new users
+      if (config.usersCount == n) return;
+
+      const m = 100; /* users per page */
       for (let i = 0; i < n; i += m) {
         fs.writeFile(
           path.join(__dirname, "cache", `users_${i / m + 1}.json`),
           JSON.stringify(users.slice(i, i + m)),
           { encoding: "utf8" },
-          err => console.error("problem", err)
+          err => {
+            if (err) console.error("users json", err);
+          }
         );
       }
       maxPages = Math.ceil(n / m);
+      config.usersCount = n;
       config.pages = maxPages;
       config.lastUpdate = new Date().getTime();
       fs.writeFile(
         configPath,
         JSON.stringify(config),
         { encoding: "utf8" },
-        err => console.error("config.json", err)
+        err => {
+          if (err) console.error("config json", err);
+        }
       );
+      fs.fsync();
       console.log("Updated cache :)");
     }
   );
@@ -68,9 +75,10 @@ const updater = () => {
 const now = new Date();
 const interval = 60 * 60 * 1000; // 1 hour
 
-if (now.getTime() - config.lastUpdate > interval);
-updater();
+// update cache immediately if last update was made more than [interval] time ago
+if (now.getTime() - config.lastUpdate > interval) updater();
 
+// auto update
 setInterval(updater, interval);
 
 // static files folder
@@ -109,8 +117,7 @@ app.get("/gallery", (req, res) => {
 });
 
 // redirect to the only valid webpage
-app.use((req, res) => {
-  res.redirect("/gallery");
-});
+app.use((req, res) => res.redirect("/gallery"));
 
+// listen carefully
 app.listen(process.env.PORT || 5000, () => console.log("listening"));
