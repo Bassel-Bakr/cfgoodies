@@ -16,7 +16,7 @@ app.set("view engine", "ejs");
 app.set("views", __dirname);
 
 // auto retrieve
-let maxPages = 0;
+let maxPages = 1;
 const updater = () => {
   console.log("Updating cache...");
 
