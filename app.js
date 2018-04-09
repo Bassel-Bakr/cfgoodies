@@ -19,11 +19,14 @@ app.set("views", __dirname);
 let config = { pages: 0, lastUpdate: 0 };
 const configPath = path.join(__dirname, "config.json");
 
-if(!fs.existsSync(configPath))
-  fs.writeFileSync(configPath, JSON.stringify(config), { encoding: "utf8"});
-else
-  config = JSON.parse(fs.readFileSync(configPath));
-
+try {
+  if(!fs.existsSync(configPath))
+    fs.writeFileSync(configPath, JSON.stringify(config), { encoding: "utf8"});
+  else
+    config = JSON.parse(fs.readFileSync(configPath));
+} catch(err) {
+  console.warn('config', err);
+}
 // auto retrieve
 let maxPages = config.pages;
 const updater = () => {
