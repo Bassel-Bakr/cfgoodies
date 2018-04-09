@@ -58,7 +58,7 @@ const updater = () => {
         configPath,
         JSON.stringify(config),
         { encoding: "utf8" },
-        err => console.error("config.json", err)
+        (err) => console.error("config.json", err)
       );
       console.log("Updated cache :)");
     }
