@@ -1,0 +1,2 @@
+# cfgoodies
+Codeforces photo gallery
