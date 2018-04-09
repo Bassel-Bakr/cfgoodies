@@ -5,6 +5,7 @@ import AppHeader from "./components/AppHeader.vue";
 import AppFooter from "./components/AppFooter.vue";
 import AppCard from "./components/AppCard.vue";
 import AppCodeforcesUser from "./components/AppCodeforcesUser.vue";
+import AppBackUp from "./components/AppBackUp.vue";
 
 import css from "./app.scss";
 
@@ -15,7 +16,8 @@ const myComponents = {
   AppHeader,
   AppFooter,
   AppCard,
-  AppCodeforcesUser
+  AppCodeforcesUser,
+  AppBackUp
 };
 
 const app = new Vue({

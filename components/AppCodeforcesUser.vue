@@ -66,15 +66,13 @@ export default {
 
 <style  scoped >
 img, .app-card {
-  min-width: 10%;
-  max-width: 100%;
-  height: auto;
-  cursor: pointer;
 }
 
 img {
-  height: 100%;
   width: auto;
+  height: 100%;
+  max-width: 100%;
+  cursor: pointer;
   box-shadow: 0 0 10px 1px black;
 }
 

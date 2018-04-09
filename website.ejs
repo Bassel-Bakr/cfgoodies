@@ -45,13 +45,16 @@
       </app-main>
 
 
-      <app-nav class="box" current=<%= page %> pages=<%= pagesCount %>>
+      <app-nav current=<%= page %> pages=<%= pagesCount %>>
       </app-nav>
       <app-footer :theme=theme></app-footer>
+
+      <!-- up button -->
+      <app-back-up></app-back-up>
+
     </app-root>
   </div>
 
-  
   
   <!-- aos animation -->
   <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>

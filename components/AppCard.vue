@@ -3,11 +3,11 @@
     <div class="card-pic">
       <slot></slot>
     </div>
-    <header class="card-header">
+    <div class="card-header">
       <p>
         <span class="first-letter">{{ handle.charAt(0) }}</span>{{ handle.slice(1) }}
       </p>
-    </header>
+    </div>
   </div>
 </template>
 
@@ -43,12 +43,18 @@ export default {
 
 .card-pic {
   height: 100%;
+  width: auto;
+  max-width: 100%;
   vertical-align: middle;
 }
 
 .card-header p {
-  font-size: 1.8rem;
-  /* display: table-cell; */
-  /* vertical-align: bottom; */
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  /* font-size: 1.8rem; */
+  display: table-cell;
+  padding-top: 5%;
+  vertical-align: bottom;
 }
 </style>
