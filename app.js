@@ -20,12 +20,14 @@ let config = { pages: 0, lastUpdate: 0 };
 const configPath = path.join(__dirname, "config.json");
 
 try {
-  if(!fs.existsSync(configPath))
-    fs.writeFileSync(configPath, JSON.stringify(config), { encoding: "utf8"});
-  else
+  const notFirstTime = fs.existsSync(configPath);
+  console.log('notFirstTime', notFirstTime);  
+  if(notFirstTime)
     config = JSON.parse(fs.readFileSync(configPath));
+  else
+    fs.writeFileSync(configPath, JSON.stringify(config), { encoding: "utf8"});
 } catch(err) {
-  console.warn('config', err);
+  console.log('config', err);
 }
 // auto retrieve
 let maxPages = config.pages;
