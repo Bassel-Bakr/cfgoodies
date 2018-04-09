@@ -1,28 +1,14 @@
+import VueResource from 'vue-resource';
+
 import AppRoot from "./components/AppRoot.vue";
-import AppNav from "./components/AppNav.vue";
-import AppMain from "./components/AppMain.vue";
-import AppHeader from "./components/AppHeader.vue";
-import AppFooter from "./components/AppFooter.vue";
-import AppCard from "./components/AppCard.vue";
-import AppCodeforcesUser from "./components/AppCodeforcesUser.vue";
-import AppBackUp from "./components/AppBackUp.vue";
 
 import css from "./app.scss";
 
-const myComponents = {
-  AppRoot,
-  AppNav,
-  AppMain,
-  AppHeader,
-  AppFooter,
-  AppCard,
-  AppCodeforcesUser,
-  AppBackUp
-};
+Vue.use(VueResource);
 
 const app = new Vue({
   el: "#vue-app",
-  components: myComponents,
+  render: h => h(AppRoot),
   data() {
     return {
       theme: "hero is-primary"

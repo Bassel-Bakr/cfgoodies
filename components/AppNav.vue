@@ -2,13 +2,13 @@
   <div :class=theme>
     <nav class="pagination" role="navigation" aria-label="pagination">
       <ul class="pagination">
-        <li><a v-if="parseInt(current) != 1" @click="gotoPage(1)" class="previous">First</a></li>
+        <li><a @click="gotoPage(1)" class="previous">First</a></li>
         <li><a v-if="0 < parseInt(current)-10" @click="gotoPage(parseInt(current)-10)">&lt;&lt; Skip 10</a></li>
         <li><a v-if="0 < parseInt(current)-1" @click="gotoPage(parseInt(current)-1)">Previous</a></li>
         <li class="active"><a :aria-label="'Goto page ' + current">{{ current }}</a></li>
         <li><a v-if="parseInt(current)+1 <= pages" @click="gotoPage(parseInt(current)+1)">Next</a></li>
         <li><a v-if="parseInt(current)+10 <= pages" @click="gotoPage(parseInt(current)+10)">Skip 10 &gt;&gt;</a></li>
-        <li><a v-if="parseInt(current) != pages" @click="gotoPage(pages)" class="next">Last</a></li>
+        <li><a @click="gotoPage(pages)" class="next">Last</a></li>
       </ul>
     </nav>
   </div>
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     gotoPage: function(page) {
-      window.location.href = `gallery?page=${page}`;
+      this.$emit("switchPage", page);
     },
     getTabbedPages: function() {
       let a = [1];

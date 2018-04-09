@@ -10,9 +10,6 @@ const app = express();
 // gzip compression
 app.use(compression());
 
-// use ejs templates
-app.set("view engine", "ejs");
-
 // set views folder
 app.set("views", __dirname);
 
@@ -90,29 +87,11 @@ app.get("/data/:id", (req, res) => {
 
 // entry point for the gallery
 app.get("/gallery", (req, res) => {
-  let page = req.query.page || 1;
-  page = Math.min(page, maxPages);
-  page = Math.max(page, 1);
-  fs.readFile(
-    path.join(__dirname, "cache", `users_${page}.json`),
-    { encoding: "utf8" },
-    (err, data) => {
-      if (err) {
-        console.error(err);
-        res.render("website", {
-          page: 0,
-          pagesCount: 0,
-          users: JSON.parse('[{"handle":"Unknown", "titlePhoto": ""}]')
-        });
-      } else {
-        res.render("website", {
-          page: page,
-          pagesCount: maxPages,
-          users: JSON.parse(data)
-        });
-      }
-    }
-  );
+  res.sendFile("index.html");
+});
+
+app.get("/config", (req, res) => {
+  res.sendFile(configPath);
 });
 
 // redirect to the only valid webpage

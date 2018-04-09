@@ -1,7 +1,9 @@
 <template inline-template="true">
   <div :data-aos="getRandomAnim()" class="app-card">
     <app-card :handle="handle">
-      <img @click="gotoUser" :src="src" :alt="handle">
+      <div class="picture">
+        <img @click="gotoUser" :src="src" :alt="handle">
+      </div>
     </app-card>
   </div>
 </template>
@@ -65,13 +67,16 @@ export default {
 </script>
 
 <style  scoped >
-img, .app-card {
+.picture {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 img {
   width: auto;
-  height: 100%;
+  /* height: 100%; */
   max-width: 100%;
+  vertical-align: middle;
   cursor: pointer;
   box-shadow: 0 0 10px 1px black;
 }

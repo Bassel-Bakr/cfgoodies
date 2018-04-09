@@ -1,5 +1,6 @@
 <template>
   <div class="app-main">
+    
     <slot></slot>
   </div>
 </template>
