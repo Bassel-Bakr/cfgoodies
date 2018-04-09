@@ -66,7 +66,6 @@ const updater = () => {
           if (err) console.error("config json", err);
         }
       );
-      fs.fsync();
       console.log("Updated cache :)");
     }
   );
