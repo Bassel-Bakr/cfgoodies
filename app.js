@@ -21,13 +21,12 @@ const configPath = path.join(__dirname, "config.json");
 
 try {
   const notFirstTime = fs.existsSync(configPath);
-  console.log('notFirstTime', notFirstTime);  
-  if(notFirstTime)
-    config = JSON.parse(fs.readFileSync(configPath));
+  console.log("notFirstTime", notFirstTime);
+  if (notFirstTime) config = JSON.parse(fs.readFileSync(configPath));
   else
-    fs.writeFileSync(configPath, JSON.stringify(config), { encoding: "utf8"});
-} catch(err) {
-  console.log('config', err);
+    fs.writeFileSync(configPath, JSON.stringify(config), { encoding: "utf8" });
+} catch (err) {
+  console.log("config", err);
 }
 // auto retrieve
 let maxPages = config.pages;
@@ -35,8 +34,7 @@ const updater = () => {
   console.log("Updating cache...");
 
   const cache = path.join(__dirname, "cache");
-  if(!fs.existsSync(cache))
-    fs.mkdirSync(cache);
+  if (!fs.existsSync(cache)) fs.mkdirSync(cache);
   request.get(
     "http://codeforces.com/api/user.ratedList",
     (err, response, body) => {
@@ -56,7 +54,12 @@ const updater = () => {
       maxPages = Math.ceil(n / m);
       config.pages = maxPages;
       config.lastUpdate = new Date().getTime();
-      fs.writeFile(configPath, JSON.stringify(config));
+      fs.writeFile(
+        configPath,
+        JSON.stringify(config),
+        { encoding: "utf8" },
+        err => console.error("config.json", err)
+      );
       console.log("Updated cache :)");
     }
   );
@@ -65,8 +68,8 @@ const updater = () => {
 const now = new Date();
 const interval = 60 * 60 * 1000; // 1 hour
 
-if(now.getTime() - config.lastUpdate > interval);
-  updater();
+if (now.getTime() - config.lastUpdate > interval);
+updater();
 
 setInterval(updater, interval);
 
