@@ -19,6 +19,9 @@ app.set("views", __dirname);
 let config = { pages: 0, lastUpdate: 0 };
 const configPath = path.join(__dirname, "config.json");
 
+console.log(__dirname);
+console.log(configPath);
+
 if(!fs.existsSync(configPath))
   fs.writeFileSync(configPath, JSON.stringify(config));
 else
