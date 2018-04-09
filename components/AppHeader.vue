@@ -30,7 +30,7 @@ header {
       rgba(37, 6, 63, 0.5),
       rgba(37, 6, 63, 0.5)
     ),
-    url("https://wallpapertag.com/wallpaper/full/c/a/9/125582-code-wallpaper-1920x1200-for-ipad-2.jpg");
+    url("https://cdn.pixabay.com/photo/2017/06/23/10/48/code-2434271_960_720.jpg");
 }
 
 header p {
