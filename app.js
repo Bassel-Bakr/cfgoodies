@@ -99,6 +99,6 @@ app.get("/config", (req, res) => {
 app.use((req, res) => res.redirect("/gallery"));
 
 // listen carefully
-app.listen(process.env.PORT || 5000, () => console.log("listening"));
+// app.listen(process.env.PORT || 5000, () => console.log("listening"));
 
 module.exports.handler = serverless(app);
