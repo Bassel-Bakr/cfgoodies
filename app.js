@@ -3,6 +3,7 @@ const path = require("path");
 const request = require("request");
 const express = require("express");
 const compression = require("compression");
+const serverless = require("serverless-http");
 
 // instance of the server
 const app = express();
@@ -99,3 +100,5 @@ app.use((req, res) => res.redirect("/gallery"));
 
 // listen carefully
 app.listen(process.env.PORT || 5000, () => console.log("listening"));
+
+module.exports.handler = serverless(app);
